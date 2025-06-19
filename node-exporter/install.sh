@@ -21,6 +21,7 @@ if [[ $ARCH == "x86_64" ]]; then
 fi
 
 # Download and install Node Exporter Binary
+cd /tmp
 wget https://github.com/prometheus/node_exporter/releases/download/v${VERSION}/node_exporter-${VERSION}.${OS}-${ARCH}.tar.gz
 tar xvfz node_exporter-*.*-${ARCH}.tar.gz
 cd node_exporter-*.*-${ARCH}
@@ -30,7 +31,7 @@ sudo mv node_exporter /usr/local/bin
 sudo useradd -r -s /sbin/nologin -M node_exporter
 
 # Create systemd service
-sudo cat <<EOF > /etc/systemd/system/node_exporter.service
+cat <<EOF > node_exporter.service
 [Unit]
 Description=Node Exporter
 After=network.target
@@ -43,6 +44,8 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 EOF
+
+sudo mv node_exporter.service /etc/systemd/system
 
 # Enable and start systemd service
 sudo systemctl enable --now node_exporter
