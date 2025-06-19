@@ -3,14 +3,14 @@ set -euo pipefail
 trap 's=$?; echo >&2 "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 # Check if user passed Node Exporter version
-if [[ "$#" -ne 1  ]]; then
-    echo "This scrips requires exactly ONE argument."
-    echo "Usage: ./${0} <NODE_EXPORTER_VERSION>"
+if [[ "$#" -gt 1  ]]; then
+    echo "This scrips requires at most ONE argument."
+    echo "Usage: ./${0} [NODE_EXPORTER_VERSION]"
     exit 1
 fi
 
 # Set Node Exporter version
-export VERSION=${1} 
+export VERSION=${1:-'1.9.1'} 
 
 # Gather basic system information
 export OS="$(uname | tr A-Z a-z)" # Operational System
