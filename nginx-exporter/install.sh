@@ -26,7 +26,6 @@ fi
 cd /tmp
 wget https://github.com/nginx/nginx-prometheus-exporter/releases/download/v${VERSION}/nginx-prometheus-exporter_${VERSION}_${OS}_${ARCH}.tar.gz
 tar xvfz nginx-prometheus-exporter_*.*_${ARCH}.tar.gz
-cd nginx-prometheus-exporter_*.*_${ARCH}
 sudo mv nginx-prometheus-exporter /usr/local/bin
 
 # Create node_exporter user with /sbin/nologin shell and no special privileges
