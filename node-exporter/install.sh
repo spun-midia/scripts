@@ -4,7 +4,7 @@ trap 's=$?; echo >&2 "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 # Check if user passed Node Exporter version
 if [[ "$#" -gt 1  ]]; then
-    echo "This scrips requires at most ONE argument."
+    echo "This scrips accepts at most ONE argument."
     echo "Usage: ./${0} [NODE_EXPORTER_VERSION]"
     exit 1
 fi
@@ -28,7 +28,10 @@ cd node_exporter-*.*-${ARCH}
 sudo mv node_exporter /usr/local/bin
 
 # Create node_exporter user with /sbin/nologin shell and no special privileges
-sudo useradd -r -s /sbin/nologin -M node_exporter
+# If it doesn't exist
+if [[ ! $(id -u node_exporter) ]]; then
+    sudo useradd -r -s /sbin/nologin -M node_exporter
+fi
 
 # Create systemd service
 cat <<EOF > node_exporter.service
