@@ -16,8 +16,10 @@ export VERSION=${1:-'1.9.1'}
 export OS="$(uname | tr A-Z a-z)" # Operational System
 export ARCH="$(uname -m)" # CPU Architecture
 
-if [[ $ARCH == "x86_64" || $ARCH == "aarch64" ]]; then
+if [[ $ARCH == "x86_64"]]; then
     export ARCH="amd64"
+else [[ $ARCH == "aarch64" ]]; then
+    export ARCH="arm64"
 fi
 
 # Download and install Node Exporter Binary
