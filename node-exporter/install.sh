@@ -18,7 +18,7 @@ export ARCH="$(uname -m)" # CPU Architecture
 
 if [[ $ARCH == "x86_64"]]; then
     export ARCH="amd64"
-else [[ $ARCH == "aarch64" ]]; then
+elif [[ $ARCH == "aarch64" ]]; then
     export ARCH="arm64"
 fi
 
