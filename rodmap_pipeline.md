@@ -63,3 +63,10 @@ Em cada semana:
 - Reunião com os times para retrospectiva da implementação.
 - Análise de métricas (número de alertas, atualizações automáticas, lint fixes).
 - Estabelecimento do processo de manutenção contínua (como tratar PRs do Dependabot, revisão de regras DangerJS, etc).
+
+### 🔹Os 3 primeiros repositórios 
+- Quizz
+- spun-leads-quizzes
+- redirect-route
+
+
